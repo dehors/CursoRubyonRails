@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+el tree require_tree añade al proyecto todos los archivos css
+que coloquemos a la carpeta assets/stylesheets
+*/

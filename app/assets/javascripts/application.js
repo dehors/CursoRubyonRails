@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//el tree require_tree añade al proyecto todos los archivos css
+//que coloquemos a la carpeta assets/stylesheets
