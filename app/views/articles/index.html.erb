@@ -7,12 +7,12 @@
 
 <% @articles.each do |art| %>
 	<h4><%= link_to art.title, article_path(art) %></h4>
-	
+
 	
 
 		
 	
-		<p><%= art.body %></p>
+		<p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>
 		
 	
 	
