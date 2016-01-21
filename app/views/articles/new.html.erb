@@ -6,6 +6,16 @@
 
 	<div class="col-md-6">
 
+  <% if @articles.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @articles.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 		<%= form_for(@articles) do |f| %>
     	<div class="form-group has-success">
     			<label class="control-label">Title</label>   		
