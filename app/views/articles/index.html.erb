@@ -12,8 +12,12 @@
 	
 
 		
-	
-		<p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>
+	    <% if user_signed_in? %>
+        <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>
+        <% else %>
+        <p><%= art.body %></p>
+        <% end %>
+		
 		
 	
 	
