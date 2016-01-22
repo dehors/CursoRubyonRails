@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   #ruta root del proyecto
 
   resources :articles do 
-	resources :comments
+	resources :comments, only: [:create, :destroy, :update]
   end
 end
