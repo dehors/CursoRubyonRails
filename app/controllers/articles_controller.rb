@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 		@articles = Article.all
 	end
 	def show
+		@comment = Comment.new
 		@articles.update_visits_count		
 	end
 	def new

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments
-
+  
   devise_for :users
   get 'index' => 'home#index'
   #ruta con nombre asignado
@@ -9,5 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
   #ruta root del proyecto
 
-  resources :articles
+  resources :articles do 
+	resources :comments
+  end
 end

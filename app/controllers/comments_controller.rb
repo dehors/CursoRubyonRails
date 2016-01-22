@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :create]
   respond_to :html
 
   def index
@@ -21,9 +21,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
+    @comment.article = @article
     @comment.save
-    respond_with(@comment)
+    redirect_to @comment.article
   end
 
   def update
@@ -34,6 +35,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_with(@comment)
+  end
+  
+  def set_article
+    @article = Article.find(params[:article_id])
   end
 
   private

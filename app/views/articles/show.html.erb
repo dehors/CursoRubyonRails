@@ -12,6 +12,45 @@
 
 	<p>Visits: <%= @articles.visits_count %></p>
 	<h2>
+	Comments
+    </h2>
 
+    <table>
+	  <thead>
+	    <tr>
+	      <th>User</th>
+	      <th>Article</th>
+	      <th>Body</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @articles.comments.each do |comment| %>
+	   
+	      <tr>
+	        <td><%= comment.user.email %> </td>
+	        <td><%= comment.article.title %> </td>
+	        <td><%= comment.body %></td>	        
+	      </tr>
+
+	    <% end %>
+
+	 
+	  </tbody>
+	</table>
+
+<h4>new comment</h4>
+    <%= form_for([@articles,@comment]) do |f| %>  
+	  
+	  <div class="field">
+	    <%= f.label :body %><br>
+	    <%= f.text_area :body %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+
+    </div>
 
 </div>
