@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 		end
 	end
 	def create
-		@articles = Article.new(article_params)		
+		@articles = current_user.articles.new(article_params)		
 		@articles.save
 
 		if @articles.save
