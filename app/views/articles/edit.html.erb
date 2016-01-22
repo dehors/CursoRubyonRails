@@ -16,19 +16,8 @@
     </div>
   <% end %>
 
-		<%= form_for(@articles) do |f| %>
-    	<div class="form-group has-success">
-    			<label class="control-label">Title</label>   		
-   			<%= f.text_field :title , placeholder: "Title", class:"form-control" %>
-  		</div>
- 		  <div class="form-group has-success">
-    		<label class="control-label">Body</label>			
-   			<%= f.text_area :body , placeholder: "Write the article here...", class:"form-control", rows: "3" %>
-  		</div>
-
-        <%= f.submit "Send" , class:"btn btn-success" %>
-
-       <% end %>
+  <%= render "partial/form" %>
+		
 	</div>  
 
 </div>
