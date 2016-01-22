@@ -18,9 +18,14 @@
         <li><a href="/articles">Articles</a></li>
         <li><a href="/articles/new">New Articles</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Login" %></li>
-        <li><%= link_to "Registration"%></li>
+      <ul class="nav navbar-nav navbar-right">   
+        <% if user_signed_in? %>
+        <li><%= link_to "logout", destroy_user_session_path , method: :delete %></li>
+        <% else %>
+         <li><%= link_to "Login", user_session_path %></li>
+        <li><%= link_to "Registration", new_user_registration_path %></li>
+        <% end %>
+
       </ul>
     </div>
   </div>
