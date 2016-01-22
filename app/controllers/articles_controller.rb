@@ -8,6 +8,17 @@ class ArticlesController < ApplicationController
 	def new
 		@articles = Article.new
 	end
+	def edit
+		@articles = Article.find(params[:id])
+	end
+	def update
+		@articles = Article.find(params[:id])
+		if @articles.update(article_params)
+		redirect_to @articles
+		else 
+		render :edit
+		end
+	end
 	def create
 		@articles = Article.new(article_params)		
 		@articles.save

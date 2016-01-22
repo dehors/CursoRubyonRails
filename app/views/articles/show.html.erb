@@ -7,7 +7,7 @@
 	<h4>Write by: </h4>
 	<h4><%= @articles.title %></h4>
 
-		<p><%= @articles.body %></p>
+		<p><%= @articles.body %> -  <%= link_to "Edit", edit_article_path(@articles) %></p>
 	
 
 	<p>Visits: <%= @articles.visits_count %></p>
