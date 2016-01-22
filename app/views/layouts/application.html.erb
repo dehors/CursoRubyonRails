@@ -9,6 +9,8 @@
 <body>
 <%= render "partial/navar" %>
 <div class="container">
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 	<%= yield %>
 </div>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
