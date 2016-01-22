@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'index' => 'home#index'
   #ruta con nombre asignado
   get 'home/index'
