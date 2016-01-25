@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:update, :destroy]
-  before_action :set_article, only: [:update, :destroy]
+  before_action :set_article, only: [:update, :destroy, :create]
   respond_to :html
 
   def index
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.article = @article
     @comment.save
-    redirect_to @comment.article
+    redirect_to @comment.article, notice: 'Comment was successfully created'
   end
 
   def update
