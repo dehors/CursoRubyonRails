@@ -24,7 +24,7 @@
 	    </tr>
 	  </thead>
 
-	  <tbody>
+	  <tbody id="comments-box">
 	    <% @articles.comments.each do |comment| %>
 	   
 	      <tr>
@@ -40,7 +40,7 @@
 	</table>
 
 <h4>new comment</h4>
-    <%= form_for([@articles,@comment]) do |f| %>  
+    <%= form_for([@articles,@comment], remote: true, html: { id: "comments-form" ,:"data-type" => "json"}) do |f| %>  
 	  
 	  <div class="field">
 	    <%= f.label :body %><br>
