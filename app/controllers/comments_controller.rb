@@ -3,23 +3,6 @@ class CommentsController < ApplicationController
   before_action :set_article, only: [:update, :destroy, :create]
   respond_to :html
 
-  def index
-    @comments = Comment.all
-    respond_with(@comments)
-  end
-
-  def show
-    respond_with(@comment)
-  end
-
-  def new
-    @comment = Comment.new
-    respond_with(@comment)
-  end
-
-  def edit
-  end
-
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.article = @article
