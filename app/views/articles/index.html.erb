@@ -9,13 +9,12 @@
 <% @articles.each do |art| %>
 	<h4><%= link_to art.title, article_path(art) %></h4>	
 
-		<%= image_tag(art.avatars_url) %>
+		<%= image_tag(art.avatars.thumb.url) %>
 	    <% if user_signed_in? %>
         <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>        
         <% else %>
         <p><%= art.body %></p>        
-        <% end %>
-		
+        <% end %>		
 		
 	<p>Visits: <%= art.visits_count %></p>
 
