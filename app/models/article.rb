@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments
 	mount_uploader :avatars, AvatarUploader
+	after_commit :remove_avatars!, on: :destroy
 	before_create :set_visits_count
 
 	def update_visits_count
