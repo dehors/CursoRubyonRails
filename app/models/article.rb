@@ -3,6 +3,8 @@ class Article < ActiveRecord::Base
 	validates :body, presence: true , length: {  minimum: 5 , message: "%{value} You must have minimum 5 characters"}
 	belongs_to :user
 	has_many :comments
+	has_many :has_categories
+	has_many :categories, through: :has_categories
 	mount_uploader :avatars, AvatarUploader
 	after_commit :remove_avatars!, on: :destroy
 	after_commit :remove_previously_stored_avatar, on: :update
