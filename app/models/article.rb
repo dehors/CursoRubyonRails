@@ -7,6 +7,7 @@ class Article < ActiveRecord::Base
 	after_commit :remove_avatars!, on: :destroy
 	after_commit :remove_previously_stored_avatar, on: :update
 	before_create :set_visits_count
+	validates :avatars, presence: true
 
 	def update_visits_count
 		self.update(visits_count: self.visits_count + 1)

@@ -9,7 +9,11 @@
 <% @articles.each do |art| %>
 	<h4><%= link_to art.title, article_path(art) %></h4>	
 
-		<%= image_tag(art.avatars.thumb.url) %>
+		<% if art.avatars?%>
+		<%=	image_tag(art.avatars.thumb.url) %>
+		<% else %>
+		<img src="/uploads/article/avatars/10/thumb_surfranchlogovector_0.png">
+		<% end %>
 	    <% if user_signed_in? %>
         <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>        
         <% else %>
