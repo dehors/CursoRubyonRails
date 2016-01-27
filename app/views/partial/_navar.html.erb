@@ -17,6 +17,11 @@
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
         <li><a href="/articles">Articles</a></li>
         <li><a href="/articles/new">New Articles</a></li>
+        
+        <% @categories.each do |art| %> 
+        <li><%= link_to art.name, art %></li>       
+        <%end%>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">   
         <% if user_signed_in? %>
