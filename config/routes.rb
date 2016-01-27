@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :categories
+
   devise_for :users
   get 'index' => 'home#index'
   #ruta con nombre asignado
