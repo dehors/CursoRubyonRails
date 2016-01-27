@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126172541) do
+ActiveRecord::Schema.define(version: 20160127182607) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -20,14 +20,17 @@ ActiveRecord::Schema.define(version: 20160126172541) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
     t.string   "avatars"
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
