@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 	end
 	def create
 		@articles = current_user.articles.new(article_params)			
-	
+		@articles.categories = params[:categories]
 		if @articles.save
     		redirect_to @articles
         else
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
 		@articles = Article.find(params[:id])
 	end
 	def article_params
-       params.require(:article).permit(:title, :body, :avatars)
+       params.require(:article).permit(:title, :body, :avatars, :categories)
     end
 
 end
