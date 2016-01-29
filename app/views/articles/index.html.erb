@@ -10,7 +10,7 @@
 	<h4><%= link_to art.title, article_path(art) %></h4>	
 
 		<% if art.avatars?%>
-		<%=	image_tag(art.avatars.thumb.url) %>
+		<%=	image_tag(art.avatars.thumb.url , class:"redonda") %>
 		<% else %>
 		<img src="/uploads/article/avatars/10/thumb_surfranchlogovector_0.png">
 		<% end %>

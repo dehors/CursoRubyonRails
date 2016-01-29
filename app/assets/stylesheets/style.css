@@ -31,4 +31,18 @@ th{
 }
 
 
+.redonda{
+ border-radius:3.125em/*40px/16px*/;
+  opacity:1;
+  -ms-transition:all 0.5s ease-out;
+  -moz-transition:all 0.5s ease-out;
+  -o-transition:all 0.5s ease-out;
+  -webkit-transition:all 0.5s ease-out;
+  transition:all 0.5s ease-out;  
+  filter:alpha(opacity=7);
+
+  }
+
+
+
 
