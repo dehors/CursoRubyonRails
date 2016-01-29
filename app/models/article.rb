@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
 	after_commit :remove_avatars!, on: :destroy
 	after_commit :remove_previously_stored_avatar, on: :update
 	before_create :set_visits_count
-	validates :avatars, presence: true
+	#validates :avatars, presence: true
 	after_create :save_categories
 	
 
@@ -19,11 +19,28 @@ class Article < ActiveRecord::Base
 	def update_visits_count
 		self.update(visits_count: self.visits_count + 1)
 	end
-	
-	private
-	def save_categories
-		@categories.each do |category_id|
+	def update_categories
+
+		delete = HasCategory.where(article_id: self.id)
+		if  delete ||= nil
+			delete.each do |del_has_category|
+				del_has_category.destroy
+			end
+
+		end
+	    if  @categories ||= nil
+			@categories.each do |category_id|
 			HasCategory.create(category_id: category_id,article_id: self.id)
+			end
+		end
+	end
+	private
+
+	def save_categories
+		if  @categories ||= nil
+			@categories.each do |category_id|
+			HasCategory.create(category_id: category_id,article_id: self.id)
+			end
 		end
 	end
 

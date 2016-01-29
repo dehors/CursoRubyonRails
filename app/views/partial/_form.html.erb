@@ -15,12 +15,32 @@
     		<label class="control-label">Body</label>			
    			<%= f.text_area :body , placeholder: "Write the article here...", class:"form-control", rows: "3" %>
   		</div>
-      <div class="form-group has-success">
-          <label class="control-label">Categories</label>   
-           <% @categories.each do |art| %> 
-            <li><%= check_box_tag "categories[]", art.id %> <%= art.name %></li>       
-           <%end%>   
-      </div>
+
+       <% if name == "Edit" %>
+           <div class="form-group has-success">
+              <label class="control-label">Categories</label>   
+                 <% @categories.each do |art| %> 
+                  <% aux = 0 %>
+                        <% @articles.categories.each do |cat| %> 
+                             <% if cat.id ==  art.id %>
+                             <li><%= check_box_tag "categories[]", art.id, {checked: true} %> <%= art.name %></li> 
+                             <% aux = 1 %>                          
+                             <% end %>  
+                        <% end %>
+                        <% if aux == 0 %>
+                         <li><%= check_box_tag "categories[]", art.id %> <%= art.name %></li>
+                        <% end %>
+                 <%end%>   
+           </div>
+        <% else %>
+           <div class="form-group has-success">
+              <label class="control-label">Categories</label>   
+               <% @categories.each do |art| %> 
+                <li><%= check_box_tag "categories[]", art.id %> <%= art.name %></li>       
+               <%end%>   
+           </div>
+        <% end %>
+      
 
         <%= f.submit "Send" , class:"btn btn-success" %>
 

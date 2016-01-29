@@ -17,8 +17,9 @@ class ArticlesController < ApplicationController
 		
 	end
 	def update
-		
-		if @articles.update(article_params)
+		   @articles.categories = params[:categories]
+		   @articles.update_categories
+		if @articles.update(article_params)		   
 		redirect_to @articles
 		else 
 		render :edit
