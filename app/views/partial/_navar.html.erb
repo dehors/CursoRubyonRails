@@ -17,6 +17,8 @@
         <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
         <li><a href="/articles">Articles</a></li>
         <li><a href="/articles/new">New Articles</a></li>
+        <li><a href="/categories/new">New Category</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
         
         <% @categories.each do |art| %> 
         <li><%= link_to art.name, art %></li>       
