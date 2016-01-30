@@ -1,0 +1,29 @@
+<%= render "partial/index" %>
+<div class="row">
+
+	<div class="col-md-6">
+<h2>
+	Articles
+</h2>
+
+<% @articles.each do |art| %>
+	<h4><%= link_to art.title, article_path(art) %></h4>	
+
+		<% if art.avatars?%>
+		<%=	image_tag(art.avatars.thumb.url , class:"redonda") %>
+		<% else %>
+		<img src="/uploads/article/avatars/10/thumb_surfranchlogovector_0.png">
+		<% end %>
+	    <% if user_signed_in? %>
+        <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>        
+        <% else %>
+        <p><%= art.body %></p>        
+        <% end %>		
+		
+	<p>Visits: <%= art.visits_count %></p>
+
+<%end%>
+
+    </div>
+
+</div>

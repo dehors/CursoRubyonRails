@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root 'home#index'
   #ruta root del proyecto
 
+  get 'dashboard'  => 'home#dashboard'
+
   resources :articles do 
 	resources :comments, only: [:create, :destroy, :update]
   end
