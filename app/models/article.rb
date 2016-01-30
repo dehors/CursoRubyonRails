@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+	include AASM
+
 	validates :title, presence: true, uniqueness: true
 	validates :body, presence: true , length: {  minimum: 5 , message: "%{value} You must have minimum 5 characters"}
 	belongs_to :user
@@ -34,6 +36,19 @@ class Article < ActiveRecord::Base
 			end
 		end
 	end
+
+	aasm column: "state" do
+		state :in_draft, initial: true
+		state :published
+
+		event :publish do
+			transitions from: :in_draft, to: :published
+		end
+		event :unpublish do
+			transitions from: :published, to: :in_draft
+		end
+	end	
+
 	private
 
 	def save_categories

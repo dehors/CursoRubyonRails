@@ -129,7 +129,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  aasm
+  aasm (~> 4.7.0)
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   devise (~> 3.5.2)
