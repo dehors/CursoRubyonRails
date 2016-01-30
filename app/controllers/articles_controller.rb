@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	before_action :authenticate_editor!, only: [:new, :create, :update]
 	before_action :authenticate_admin!, only: [:destroy, :publish]
 	def index
-		@articles = Article.publicados
+		@articles = Article.paginate(:page => params[:page], :per_page => 2).publicados
 	end
 	def show
 		@comment = Comment.new
