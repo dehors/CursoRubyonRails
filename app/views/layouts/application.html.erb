@@ -9,8 +9,11 @@
 <body>
 <%= render "partial/navar" %>
 <div class="container">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div style="<%= "display:none;" if notice.nil? and alert.nil? %>">
+	<%= notice %>
+	<%= alert %>
+</div>
+
 	<%= yield %>
 </div>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
