@@ -14,6 +14,7 @@ class Article < ActiveRecord::Base
 	#validates :avatars, presence: true
 	after_create :save_categories
 	
+	scope :publicados, ->{ where(state: "published") } 
 
 	def categories=(value)
 		@categories = value

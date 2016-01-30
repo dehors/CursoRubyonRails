@@ -7,7 +7,7 @@
 
 
 <h3>Articles</h3>
-<% @category.articles.each do |art| %>
+<% @category.articles.publicados.each do |art| %>
 <h4><%= link_to art.title, article_path(art) %></h4>
 <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>
 <% end %>

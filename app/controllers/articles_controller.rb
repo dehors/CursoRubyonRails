@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	before_action :authenticate_editor!, only: [:new, :create, :update]
 	before_action :authenticate_admin!, only: [:destroy]
 	def index
-		@articles = Article.where(state: "published")
+		@articles = Article.publicados
 	end
 	def show
 		@comment = Comment.new
