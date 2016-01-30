@@ -1,13 +1,14 @@
 <%= render "partial/index" %>
 <div class="row">
 
-	<div class="col-md-6">
+	<div class="col-md-12">
 <h2>
 	Articles
 </h2>
-
+<div class="row">
 <% @articles.each do |art| %>
-	<h4><%= link_to art.title, article_path(art) %></h4>	
+	<div class="col-md-4">
+		<h4><%= link_to art.title, article_path(art) %></h4>	
 
 		<% if art.avatars?%>
 		<%=	image_tag(art.avatars.thumb.url , class:"redonda") %>
@@ -15,14 +16,20 @@
 		<img src="/uploads/article/avatars/10/thumb_surfranchlogovector_0.png">
 		<% end %>
 	    <% if user_signed_in? %>
-        <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>        
+        <p><%= truncate(art.body, length:20) %> - <%= link_to "Delete", art, method: :delete  %></p>        
         <% else %>
         <p><%= art.body %></p>        
         <% end %>		
 		
-	<p>Visits: <%= art.visits_count %></p>
+	<p>Visits: <%= art.visits_count %> - <%= time_ago_in_words(art.created_at) %> ago</p>
 
-<%end%>
+	</div>
+<%end%>	
+</div>
+
+	
+
+
 <%= will_paginate @articles %>
 
     </div>

@@ -31,7 +31,7 @@ class Article < ActiveRecord::Base
 			end
 
 		end
-	    if  @categories ||= nil
+	    unless  @categories.nil? 
 			@categories.each do |category_id|
 			HasCategory.create(category_id: category_id,article_id: self.id)
 			end
