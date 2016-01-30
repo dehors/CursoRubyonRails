@@ -19,6 +19,7 @@ gem 'carrierwave','~> 0.10.0'
 gem 'mini_magick','~> 4.3.6'
 
 gem 'aasm','~> 4.7.0'
+gem 'will_paginate','~> 2.7.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
