@@ -15,7 +15,11 @@
 		<img src="/uploads/article/avatars/10/thumb_surfranchlogovector_0.png">
 		<% end %>
 	    <% if user_signed_in? %>
-        <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %></p>        
+        <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %> -
+	         <% if art.may_publish? %>
+	         <%= link_to "published", "/articles/#{art.id}/publish", method: :put  %>
+	         <% end %>
+        </p>        
         <% else %>
         <p><%= art.body %></p>        
         <% end %>		

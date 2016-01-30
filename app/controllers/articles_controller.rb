@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :edit]
 	before_action :set_article, except: [:index, :new, :create]
 	before_action :authenticate_editor!, only: [:new, :create, :update]
-	before_action :authenticate_admin!, only: [:destroy]
+	before_action :authenticate_admin!, only: [:destroy, :publish]
 	def index
 		@articles = Article.publicados
 	end
@@ -31,13 +31,18 @@ class ArticlesController < ApplicationController
 		if @articles.save
     		redirect_to @articles
         else
-        	render :new 
+        	render :new
        end		
 	end
 	def destroy
 		
 	    @articles.destroy
 	    redirect_to articles_path
+	end
+
+	def publish
+		@articles.publish!
+		redirect_to @articles
 	end
 
 	private 

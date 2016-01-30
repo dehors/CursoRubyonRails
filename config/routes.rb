@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #ruta root del proyecto
 
   get 'dashboard'  => 'home#dashboard'
+  put "/articles/:id/publish", to: "articles#publish"
 
   resources :articles do 
 	resources :comments, only: [:create, :destroy, :update]
