@@ -1,28 +1,22 @@
-== README
+#Tutorial
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Tools
+*version railsinstall-3.1.0
 
-Things you may want to cover:
+*error: https://gist.github.com/luislavena/f064211759ee0f806c88
 
-* Ruby version
+version: Running 2.2.x: download 2.2.3 > rubygems-update-2.2.3.gem
 
-* System dependencies
+Now, using your Command Prompt:
 
-* Configuration
+`C:\>gem install --local C:\rubygems-update-1.8.30.gem`
 
-* Database creation
+`C:\>update_rubygems --no-ri --no-rdoc`
 
-* Database initialization
+*error coffeescript
 
-* How to run the test suite
+add gemfile `gem 'coffee-script-source','1.8.0'`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*install nodejs
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

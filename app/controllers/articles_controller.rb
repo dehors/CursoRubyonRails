@@ -44,6 +44,11 @@ class ArticlesController < ApplicationController
 		@articles.publish!
 		redirect_to @articles
 	end
+	
+	def draft
+		@articles.unpublish!
+		redirect_to @articles
+	end
 
 	private 
 	def set_article

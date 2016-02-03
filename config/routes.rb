@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   resources :categories
 
+  resources :articles do 
+  resources :comments, only: [:create, :destroy, :update]
+  end
+
   devise_for :users
   get 'index' => 'home#index'
   #ruta con nombre asignado
@@ -11,9 +15,7 @@ Rails.application.routes.draw do
   #ruta root del proyecto
 
   get 'dashboard'  => 'home#dashboard'
-  put "/articles/:id/publish", to: "articles#publish"
+  get "/articles/:id/publish", to: "articles#publish"
+  get "/articles/:id/in_draft", to: "articles#draft"
 
-  resources :articles do 
-	resources :comments, only: [:create, :destroy, :update]
-  end
 end

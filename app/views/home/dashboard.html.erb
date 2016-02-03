@@ -18,6 +18,8 @@
         <p><%= art.body %> - <%= link_to "Delete", art, method: :delete  %> -
 	         <% if art.may_publish? %>
 	         <%= link_to "published", "/articles/#{art.id}/publish", method: :put  %>
+	         <% else %>
+	         <%= link_to "in draft", "/articles/#{art.id}/in_draft", method: :put  %>
 	         <% end %>
         </p>        
         <% else %>
