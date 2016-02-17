@@ -3,12 +3,26 @@ class ArticlesController < ApplicationController
 	before_action :set_article, except: [:index, :new, :create]
 	before_action :authenticate_editor!, only: [:new, :create, :update]
 	before_action :authenticate_admin!, only: [:destroy, :publish]
+	
 	def index
 		@articles = Article.paginate(:page => params[:page], :per_page => 7).publicados
 	end
 	def show
 		@comment = Comment.new
-		@articles.update_visits_count		
+		@articles.update_visits_count	
+
+		respond_to do |format|
+			format.html
+			format.pdf do
+				pdf = ArticlePdf.new(@articles)
+				send_data pdf.render, filename: "Articulo_#{@articles.title}.pdf",
+										type: "application/pdf",
+										disposition: "inline"
+						#pdf = Prawn::Document.new(:page_size => [1000, 20000])
+		#pdf = Prawn::Document.new(:page_size => '2A0')
+		#pdf = Prawn::Document.new(:page_layout => :landscape)
+			end
+		end	
 	end
 	def new
 		@articles = Article.new
