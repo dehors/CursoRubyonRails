@@ -6,7 +6,11 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    respond_with(@events)
+
+    respond_to do |format|
+         format.html {respond_with(@event)}
+         format.json {@event}     
+    end
   end
 
   def show

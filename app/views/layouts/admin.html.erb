@@ -2,8 +2,14 @@
 <html>
 <head>
 	<title>New Layout</title>
+	<%= javascript_include_tag  "jquery.min.js" %>
+	<script src='/assets/angular/angular.js'></script>
+	<script src='/assets/angular/app.js'></script>
+	<script src='/assets/angular/controllers/GenderController.js'></script>
+	<script src='/assets/angular/factories/GenderFactory.js'></script>
+
 </head>
-<body>
+<body ng-app="appGender" ng-controller="Gender">
 <%= yield %>
 </body>
 </html>
