@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
    layout "admin"   
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :verify_authenticity_token, :only => :create
   respond_to :html
 
   def index
@@ -18,17 +18,21 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
-    respond_with(@event)
+    
   end
 
   def edit
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.save
-    respond_with(@event)
+    @event  = Event.new(event_params)    
+    
+      if  @event.save        
+          render json: @event, status: 201
+      else
+         format.json {render :json, @event.errors, status: 500 }
+      end
+    
   end
 
   def update

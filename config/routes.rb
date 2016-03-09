@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :events, only: [:index]
+  resources :events, only: [:index, :new]
 
   resources :events, only: [:index, :create, :update, :destroy], path: '/api/events', defaults: {format: :json}
 

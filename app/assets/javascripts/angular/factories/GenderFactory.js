@@ -9,7 +9,7 @@ angular.module("genderFactory",[])
 		 save : function(genderData) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost/laravel51/public/api/genders',
+                url: 'http://localhost:3000/api/events',
                 headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
                 data: $.param(genderData)
             });
