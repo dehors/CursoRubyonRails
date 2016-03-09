@@ -1,2 +1,2 @@
-var appGender = angular.module('appGender',['genderController', 'genderFactory']); 
+var appGender = angular.module('appGender',['ngResource']); 
 

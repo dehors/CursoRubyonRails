@@ -1,19 +1,6 @@
-angular.module("genderFactory",[])
-
-.factory("gender", function($http){
-	
-	return {
-        get : function() {
-            return $http.get('http://localhost:3000/api/events');
-        },
-		 save : function(genderData) {
-            return $http({
-                method: 'POST',
-                url: 'http://localhost:3000/api/events',
-                headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
-                data: $.param(genderData)
-            });
-        }
-	}
-
+appGender.factory("gender", function($http,$resource){
+	return $resource('http://localhost:3000/api/events', {},{
+    query: { method: 'GET', isArray: true },
+    create: { method: 'POST' }
+    })
 });
